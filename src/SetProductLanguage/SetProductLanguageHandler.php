@@ -16,6 +16,11 @@ class SetProductLanguageHandler extends BasicHandler
 	{
 		switch ($this->language_source) {
 			case ELanguageSource::ACF:
+
+				if (!function_exists('get_field')) {
+					throw new Exception('ACF is not installed');
+				}
+
 				return get_field('pl_lang', $product->get_id());
 			case ELanguageSource::ATTRIBUTE:
 				return $product->get_attribute('pl_lang');
