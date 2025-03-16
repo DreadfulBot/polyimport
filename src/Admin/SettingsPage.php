@@ -35,6 +35,7 @@ class SettingsPage
 						<td>
 							<form method="post" action="<?php echo admin_url('admin-post.php'); ?>">
 								<input type="hidden" name="action" value="pi_set_product_language" />
+								<input type="hidden" name="callback_url" value="<?= esc_url(menu_page_url('pi', false)) ?>" />
 								<button type='submit' class="button button-primary" id="link-products-to-languages">Link products to languages</button>
 							</form>
 						</td>

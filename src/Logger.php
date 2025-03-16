@@ -8,7 +8,7 @@ class Logger extends ALog
 {
 	public function logs_root_folder(): string
 	{
-		return constant('PCM_PLUGIN_PATH') . 'logs';
+		return constant('PI_PLUGIN_PATH') . 'logs';
 	}
 
 	public function get_site_url(): ?string
