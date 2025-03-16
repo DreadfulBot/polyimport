@@ -3,7 +3,7 @@
 /**
  * Plugin Name:     Polyimport
  * Plugin URI:      git@github.com:DreadfulBot/polyimport.git
- * Description:     Plolylang + All Import Integration
+ * Description:     Polylang + WpAllImport Integration
  * Author:          Artem Krivoshchekov
  * Author URI:      roxl.ru
  * Text Domain:     polyimport
