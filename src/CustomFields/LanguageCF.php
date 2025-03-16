@@ -30,8 +30,6 @@ class LanguageCF
 					),
 				),
 			));
-		} else {
-			error_log('ACF plugin is not installed');
 		}
 	}
 }

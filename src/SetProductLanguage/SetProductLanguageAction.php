@@ -6,14 +6,15 @@ use Riskyworks\Polyimport\SetProductLanguage\SetProductLanguageHandler;
 
 class SetProductLanguageAction
 {
-	public function __construct()
-	{
+	public function __construct(
+		private readonly ELanguageSource $language_source
+	) {
 		add_action('admin_post_pi_set_product_language', [$this, 'SetProductsLanguages']);
 	}
 
 	public function SetProductsLanguages(): void
 	{
-		(new SetProductLanguageHandler())->handle();
+		(new SetProductLanguageHandler($this->language_source))->handle();
 
 		$callback_url = filter_input(INPUT_POST, 'callback_url', FILTER_VALIDATE_URL);
 

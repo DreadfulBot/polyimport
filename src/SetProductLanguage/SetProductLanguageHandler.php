@@ -4,9 +4,26 @@ namespace Riskyworks\Polyimport\SetProductLanguage;
 
 use Riskyworks\Polyimport\Core\BasicHandler;
 use Exception;
+use WC_Product;
 
 class SetProductLanguageHandler extends BasicHandler
 {
+	public function __construct(
+		private readonly ELanguageSource $language_source
+	) {}
+
+	private function get_product_language(WC_Product $product): string
+	{
+		switch ($this->language_source) {
+			case ELanguageSource::ACF:
+				return get_field('pl_lang', $product->get_id());
+			case ELanguageSource::ATTRIBUTE:
+				return $product->get_attribute('pl_lang');
+			default:
+				throw new Exception('Unknown language source');
+		}
+	}
+
 	public function handle(): void
 	{
 		// loop through all products
@@ -20,12 +37,10 @@ class SetProductLanguageHandler extends BasicHandler
 
 		foreach ($products as $product) {
 			try {
-				// get acf field pl_lang for this product
-				$pl_lang = get_field('pl_lang', $product->get_id());
+				$pl_lang = $this->get_product_language($product);
 
 				if (!$pl_lang) {
 					error_log('No language set for product ' . $product->get_id());
-
 					continue;
 				}
 

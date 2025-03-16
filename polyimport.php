@@ -15,6 +15,7 @@
 
 use Riskyworks\Polyimport\Admin\SettingsPage;
 use Riskyworks\Polyimport\CustomFields\LanguageCF;
+use Riskyworks\Polyimport\SetProductLanguage\ELanguageSource;
 use Riskyworks\Polyimport\SetProductLanguage\SetProductLanguageAction;
 
 // Your code starts here.
@@ -25,6 +26,6 @@ require_once __DIR__ . '/vendor/autoload.php';
 define('PI_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('PI_PLUGIN_URL', plugin_dir_url(__FILE__));
 
-new SetProductLanguageAction();
+new SetProductLanguageAction(ELanguageSource::ATTRIBUTE);
 new SettingsPage();
 new LanguageCF();
